@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        header {
+            background: #17365d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        nav {
+            background: #24527a;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 15px;
+        }
+
+        .event {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+
+        button {
+            background: #17365d;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px 0;
+            width: 250px;
+            max-width: 90%;
+        }
+
+        #message {
+            font-weight: bold;
+            color: #176b38;
+        }
+
+        footer {
+            text-align: center;
+            background: #17365d;
+            color: white;
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>College Event Management Portal</h1>
+    <p>Discover Events, Participate, and Make Memories!</p>
+</header>
+
+<nav>
+    <a href="#events">Upcoming Events</a>
+    <a href="#registration">Registration</a>
+    <a href="#instructions">Instructions</a>
+</nav>
+
+<main>
+    <h2 id="events">Upcoming College Events</h2>
+
+    <div class="event">
+        <h3>TechNova Symposium</h3>
+        <p>Date: October 22, 2026</p>
+        <p>Schedule: 9:00 AM - 4:00 PM</p>
+        <p>Venue: Innovation Block</p>
+        <p>Technical Presentations, Coding Contests, and Project Exhibitions.</p>
+        <button onclick="selectEvent('TechNova Symposium')">Register</button>
+    </div>
+
+    <div class="event">
+        <h3>Campus Hackathon</h3>
+        <p>Date: October 25, 2026</p>
+        <p>Schedule: 10:00 AM - 6:00 PM</p>
+        <p>Venue: Computer Science Lab</p>
+        <p>Build Innovative Solutions in a team-based Coding Challenge.</p>
+        <button onclick="selectEvent('Campus Hackathon')">Register</button>
+    </div>
+
+    <div class="event">
+        <h3>Cultural Fiesta</h3>
+        <p>Date: November 2, 2026</p>
+        <p>Schedule: 4:00 PM - 8:00 PM</p>
+        <p>Venue: Main Auditorium</p>
+        <p>Music, Dance, Drama, and Inter-College Performances.</p>
+        <button onclick="selectEvent('Cultural Fiesta')">Register</button>
+    </div>
+
+    <section id="registration">
+        <h2>Event Registration</h2>
+        <p>Selected event: <strong id="selectedEvent">None</strong></p>
+
+        <input type="text" id="studentName" placeholder="Enter student name">
+        <br>
+        <input type="email" id="studentEmail" placeholder="Enter email address">
+        <br>
+        <button onclick="registerStudent()">Submit Registration</button>
+
+        <p id="message"></p>
+        <p id="status"></p>
+    </section>
+
+    <section id="instructions">
+        <h2>Registration Instructions</h2>
+        <ul>
+            <li>Select an Event and enter your Name and Email.</li>
+            <li>Submit the Registration Form.</li>
+            <li>Keep the Confirmation Message for Reference.</li>
+            <li>Contact the Faculty Coordinator for event updates.</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>College Event Management Portal</p>
+</footer>
+
+<script>
+    let currentEvent = "";
+
+    function selectEvent(eventName) {
+        currentEvent = eventName;
+        document.getElementById("selectedEvent").textContent = eventName;
+        document.getElementById("message").textContent = "";
+        document.getElementById("status").textContent = "";
+    }
+
+    function registerStudent() {
+        let name = document.getElementById("studentName").value.trim();
+        let email = document.getElementById("studentEmail").value.trim();
+
+        if (currentEvent === "" || name === "" || email === "") {
+            document.getElementById("message").textContent =
+                "Please select an event and enter your name and email.";
+            document.getElementById("status").textContent = "";
+            return;
+        }
+
+        document.getElementById("message").textContent =
+            "Registration submitted successfully for " + currentEvent + "!";
+
+        document.getElementById("status").textContent =
+            "Registration Status: Confirmed (demo)";
+    }
+</script>
+
+</body>
+</html>
