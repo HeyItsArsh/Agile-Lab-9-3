@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: college-event-management
-          image: HeyItsArsh/college-event-management:v1
+          image: heyitsarsh/college-event-management:v1
           ports:
             - containerPort: 80
 ---
